@@ -59,9 +59,9 @@ vector<int> frc;
 
 void srch(int n)
 {
-	// ÒÔn=15ÎªÀý
+	// ï¿½ï¿½n=15Îªï¿½ï¿½
 	int sum = 0;
-	// µÚÒ»²½£¬ÒòÎªÒªÈ¡²»Í¬µÄÊý£¬´ÓÐ¡µ½´ó±éÀúÊýÊ¹ºÍÎªn£¬³ýÁË×îºóÒ»¸öÊýÒÔÍâ¼ä¸ôÎª1
+	// ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÒªÈ¡ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Îªnï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª1
 	for (int i = 2;; ++i)
 	{
 		sum += i;
@@ -77,24 +77,30 @@ void srch(int n)
 			--i;
 		}
 	}
-	// ´ËÊ±µÃµ½ÁË2,3,4,6
-	// µÚ¶þ²½£¬×îºóÒ»¸öÊýºÍµ¹ÊýµÚ¶þ¸öµÄ²îÖµdiff
+	// ï¿½ï¿½Ê±ï¿½Ãµï¿½ï¿½ï¿½2,3,4,6
+	// ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½Ä²ï¿½Öµdiff
 	int diff = frc.back() - frc[frc.size() - 2] - 1;
-	// ¾¡¿ÉÄÜ°Ñdiff·Ö¸øÇ°ÃæµÄÊý
-	// Èç¹ûdiff±È½Ï´ó£¬Ôò¿ÉÒÔ¸øÇ°ÃæµÄÊýÃ¿¸ö¶à1£¨´ÓÑ¡Êý·½Ê½¿ÉÒÔÖªµÀ²»¿ÉÄÜ¿ÉÒÔ¸ø¸ü¶à£©
+	// ï¿½ï¿½ï¿½ï¿½ï¿½Ü°ï¿½diffï¿½Ö¸ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½
+	// ï¿½ï¿½ï¿½diffï¿½È½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½Ô¸ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½Öªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü¿ï¿½ï¿½Ô¸ï¿½ï¿½à£©
 	if ((int)frc.size() - diff < 0)
 		for (int i = 0; i < frc.size() - 1; ++i)
 		{
 			++frc[i];
 			--frc.back();
 		}
-	// Èç¹ûdiff±È½ÏÐ¡£¬ÔòÖ»ÄÜ¸ø¿¿ºóÃæµÄÊýÃ¿¸ö¶à1
+	// ï¿½ï¿½ï¿½diffï¿½È½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½Ö»ï¿½Ü¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½1
 	else
 		for (int i = 0; i < diff; ++i)
 		{
 			++frc[frc.size() - 1 - i];
 			--frc.back();
 		}
+	else
+	{
+		frc.back() -= diff;
+		for (int i = 0; i < diff; ++i)
+			++frc[frc.size() - 1 - i];
+	}
 }
 
 int main()
